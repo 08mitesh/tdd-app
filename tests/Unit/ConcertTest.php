@@ -33,4 +33,14 @@ class ConcertTest extends TestCase
 
 
     }
+
+    function test_can_get_formatted_start_time()
+    {
+        $concert = Concert::factory()->make([
+            'date' => Carbon::parse('2021-10-30 12:00:00')
+        ]);
+
+        $this->assertEquals('12:00pm',$concert->formatted_start_time);
+
+    }
 }

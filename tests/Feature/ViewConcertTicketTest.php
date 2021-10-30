@@ -9,8 +9,9 @@ use Tests\TestCase;
 
 class ViewConcertTicketTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
 
+    /** @test */
     function test_user_can_view_a_concert(){
         //create
         $concert = Concert::create([
@@ -32,7 +33,6 @@ class ViewConcertTicketTest extends TestCase
 
         //Assert
         //see the concert
-//        $response->assertStatus(200);
         $response->assertSee('Testing12');
         $response->assertSee('Sub title');
         $response->assertSee('January 26, 2021');
@@ -45,5 +45,17 @@ class ViewConcertTicketTest extends TestCase
         $response->assertSee('Additional info regarding concert');
 
 
+    }
+
+    /** @test */
+    function test_user_can_not_view_a_unpublished_concerts()
+    {
+        $concert = Concert::factory()->make([
+            'published_at' => null
+        ]);
+
+        $response = $this->get('/concerts/'.$concert->id);
+
+        $response->assertStatus(404);
     }
 }
