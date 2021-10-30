@@ -35,8 +35,8 @@ class ViewConcertTicketTest extends TestCase
 //        $response->assertStatus(200);
         $response->assertSee('Testing12');
         $response->assertSee('Sub title');
-        $response->assertSee(Carbon::parse('January 26, 2021 10:00am'));
-        $response->assertSee(3250);
+        $response->assertSee('January 26, 2021');
+        $response->assertSee('32.50');
         $response->assertSee('venue');
         $response->assertSee('line 1');
         $response->assertSee('Maharashtra');

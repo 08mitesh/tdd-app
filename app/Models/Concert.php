@@ -10,4 +10,9 @@ class Concert extends Model
     use HasFactory;
 
     protected $guarded =[];
+
+    public function getFormattedDateAttribute()
+    {
+        return $this->date->format('F j, Y');
+    }
 }

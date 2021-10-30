@@ -1,7 +1,7 @@
-<p>{{ $concert->title }}</p>
+<h1>{{ $concert->title }}</h1>
 <p>{{ $concert->subtitle }}</p>
-<p>{{ $concert->date }}</p>
-<p>{{ $concert->ticket_price }}</p>
+<p>{{ $concert->formatted_date }}</p>
+<p>{{ number_format($concert->ticket_price / 100 ,2) }}</p>
 <p>{{ $concert->venue }}</p>
 <p>{{ $concert->venue_address }}</p>
 <p>{{ $concert->state }}</p>
